@@ -1,0 +1,72 @@
+{
+  "scripts": {
+    "setup": {
+      "description": "Complete project setup",
+      "script": "npm run install-all && npm run setup-env && npm run setup-db"
+    },
+    "install-all": {
+      "description": "Install all dependencies",
+      "script": "npm install && cd client && npm install"
+    },
+    "setup-env": {
+      "description": "Setup environment files",
+      "script": "node scripts/setup-env.js"
+    },
+    "setup-db": {
+      "description": "Setup database",
+      "script": "node scripts/setup-db.js"
+    },
+    "dev": {
+      "description": "Start development servers",
+      "script": "concurrently \"npm run server\" \"npm run client\" --names \"SERVER,CLIENT\" --prefix-colors \"blue,green\""
+    },
+    "server": {
+      "description": "Start backend server",
+      "script": "nodemon server/server.js"
+    },
+    "client": {
+      "description": "Start frontend client",
+      "script": "cd client && npm start"
+    },
+    "build": {
+      "description": "Build for production",
+      "script": "cd client && npm run build"
+    },
+    "test": {
+      "description": "Run all tests",
+      "script": "npm run test:server && npm run test:client"
+    },
+    "test:server": {
+      "description": "Run server tests",
+      "script": "jest server/ --coverage"
+    },
+    "test:client": {
+      "description": "Run client tests",
+      "script": "cd client && npm test -- --coverage --watchAll=false"
+    },
+    "lint": {
+      "description": "Lint all code",
+      "script": "eslint server/ client/src/ --ext .js,.jsx"
+    },
+    "lint:fix": {
+      "description": "Fix linting issues",
+      "script": "eslint server/ client/src/ --ext .js,.jsx --fix"
+    },
+    "start": {
+      "description": "Start production server",
+      "script": "NODE_ENV=production node server/server.js"
+    },
+    "deploy": {
+      "description": "Deploy to production",
+      "script": "npm run build && npm run start"
+    },
+    "health-check": {
+      "description": "Check system health",
+      "script": "node scripts/health-check.js"
+    },
+    "demo": {
+      "description": "Setup demo data",
+      "script": "node scripts/setup-demo.js"
+    }
+  }
+}
